@@ -242,17 +242,6 @@
             margin-left: 10px;
         }
 
-        .demo-notice {
-            background: linear-gradient(45deg, #ffa726, #ffb74d);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(255, 167, 38, 0.3);
-        }
-
         .horario-badge {
             background: linear-gradient(45deg, #00a8ff, #0097e6);
             color: white;
@@ -277,6 +266,53 @@
             align-items: center;
             gap: 5px;
         }
+
+        .desconto-badge {
+            background: linear-gradient(45deg, #ff4081, #f50057);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .price-comparison {
+            background: linear-gradient(135deg, rgba(255, 64, 129, 0.1), rgba(245, 0, 87, 0.1));
+            border: 1px solid rgba(255, 64, 129, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .ilimitado-badge {
+            background: linear-gradient(45deg, #9c27b0, #673ab7);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 8px;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -294,8 +330,7 @@
                             <a href="#sites" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-blue-400">Sites</a>
                             <a href="#creditos" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-blue-400">Créditos</a>
                             <a href="#vantagens" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-blue-400">Vantagens</a>
-                            <a href="#lucro" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-blue-400">Seu Lucro</a>
-                            <a href="#depoimentos" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-blue-400">Depoimentos</a>
+                            <a href="#video" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-blue-400">Vídeo</a>
                         </div>
                     </div>
                 </div>
@@ -321,8 +356,7 @@
                 <a href="#sites" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-gray-900 hover:text-blue-400">Sites</a>
                 <a href="#creditos" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-gray-900 hover:text-blue-400">Créditos</a>
                 <a href="#vantagens" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-gray-900 hover:text-blue-400">Vantagens</a>
-                <a href="#lucro" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-gray-900 hover:text-blue-400">Seu Lucro</a>
-                <a href="#depoimentos" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-gray-900 hover:text-blue-400">Depoimentos</a>
+                <a href="#video" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-gray-900 hover:text-blue-400">Vídeo</a>
                 <a href="https://wa.me/5515997556792" class="block btn-primary text-white px-3 py-3 rounded-md text-base font-bold text-center mt-2">
                     <i class="fab fa-whatsapp mr-2"></i> Seja um Revendedor
                 </a>
@@ -333,10 +367,6 @@
     <!-- Hero Section -->
     <section id="home" class="hero-section min-h-screen flex items-center pt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-            <div class="demo-notice max-w-2xl mx-auto">
-                <i class="fas fa-info-circle mr-2"></i>
-                ESTE É UM SITE DEMONSTRATIVO - VALORES DOS CRÉDITOS SÃO VERÍDICOS
-            </div>
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white">
                 <span class="gradient-text">Revenda IPTV</span> EnerVio
             </h1>
@@ -360,7 +390,7 @@
         </div>
     </section>
 
-    <!-- Stats Section Atualizada -->
+    <!-- Stats Section -->
     <section class="py-16 bg-gradient-to-b from-gray-900 to-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -422,19 +452,35 @@
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-500 mr-3 text-xl"></i>
-                            <span class="text-gray-300">Domínio e hospedagem inclusos</span>
+                            <span class="text-gray-300">Hospedagem inclusa</span>
                         </li>
                     </ul>
-                    <div class="bg-blue-900 bg-opacity-30 p-6 rounded-xl mb-6">
-                        <h4 class="text-xl font-bold text-white mb-2">Investimento: R$ 250</h4>
-                        <div class="pix-badge inline-flex">
-                            <i class="fas fa-qrcode"></i>
-                            Pagamento via PIX
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="bg-blue-900 bg-opacity-30 p-4 rounded-xl">
+                            <h4 class="text-lg font-bold text-white mb-1">Com domínio grátis: R$ 250</h4>
+                            <p class="text-gray-300 text-sm">Domínio básico incluído (ex: seusite.enervio.com)</p>
+                        </div>
+                        
+                        <div class="bg-purple-900 bg-opacity-30 p-4 rounded-xl">
+                            <h4 class="text-lg font-bold text-white mb-1">Domínio personalizado: Valor variável</h4>
+                            <p class="text-gray-300 text-sm">Seunegocio.com | Suarevenda.net (consulte valores)</p>
                         </div>
                     </div>
-                    <a href="https://wa.me/5515997556792?text=Quero%20saber%20mais%20sobre%20o%20site%20de%20revenda%20de%20R%24250" class="btn-primary text-white px-8 py-4 rounded-lg text-lg font-bold inline-flex items-center">
-                        <i class="fas fa-laptop-code mr-2"></i> Quero Meu Site
-                    </a>
+
+                    <div class="pix-badge inline-flex mb-4">
+                        <i class="fas fa-qrcode"></i>
+                        Pagamento via PIX
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://guguzer.github.io/IPTV/" target="_blank" class="btn-primary text-white px-8 py-4 rounded-lg text-lg font-bold inline-flex items-center justify-center">
+                            <i class="fas fa-eye mr-2"></i> Ver Site Demo
+                        </a>
+                        <a href="https://wa.me/5515997556792?text=Quero%20saber%20mais%20sobre%20o%20site%20de%20revenda" class="btn-outline text-white px-8 py-4 rounded-lg text-lg font-bold inline-flex items-center justify-center hover:bg-blue-500">
+                            <i class="fas fa-laptop-code mr-2"></i> Quero Meu Site
+                        </a>
+                    </div>
                 </div>
                 <div class="modern-card p-6 rounded-xl">
                     <div class="bg-gray-800 rounded-lg p-4 mb-4">
@@ -447,8 +493,8 @@
                             <span class="text-blue-400 font-bold text-xl">SeuSiteDeRevenda.com</span>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-center">
-                        Exemplo de como ficará seu site personalizado
+                    <p class="text-gray-400 text-center text-sm">
+                        Exemplo de site personalizado - <a href="https://guguzer.github.io/IPTV/" target="_blank" class="text-blue-400 hover:text-blue-300">Clique para ver demo</a>
                     </p>
                 </div>
             </div>
@@ -465,7 +511,7 @@
                 <p class="text-xl text-gray-300 max-w-3xl mx-auto">
                     Escolha os melhores créditos para sua rede de revenda
                     <br>
-                    <span class="text-yellow-400 font-semibold">Valores verídicos - Mínimo de 8 créditos por compra</span>
+                    <span class="text-yellow-400 font-semibold">Mínimo de 8 créditos por compra</span>
                 </p>
             </div>
             
@@ -475,8 +521,16 @@
                     <div class="popular-badge">MAIS VENDIDO</div>
                     <h3 class="text-2xl font-bold mb-4 text-center">UniTV</h3>
                     <div class="text-center mb-6">
-                        <span class="text-4xl font-bold gradient-text">R$12</span>
-                        <span class="text-gray-400 block">por crédito</span>
+                        <div class="flex justify-center items-baseline gap-2">
+                            <span class="text-4xl font-bold gradient-text">R$12</span>
+                            <span class="text-gray-400 text-lg">por crédito</span>
+                        </div>
+                        <div class="price-comparison">
+                            <span class="text-green-400 text-sm font-bold">
+                                <i class="fas fa-arrow-down"></i>
+                                A partir de 100 créditos: <strong>R$ 10,90</strong>
+                            </span>
+                        </div>
                         <span class="minimo-badge">Mínimo: 8 créditos</span>
                     </div>
                     <ul class="space-y-3 mb-8">
@@ -500,9 +554,13 @@
                             <i class="fas fa-check text-green-500 mr-2"></i>
                             <span>Margem de lucro: 40-100%</span>
                         </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            <span class="text-gray-400">Não possui créditos ilimitados</span>
+                        </li>
                     </ul>
                     <a href="https://wa.me/5515997556792?text=Quero%20comprar%20créditos%20UniTV%20-%20mínimo%208%20créditos" class="btn-primary text-white w-full py-3 rounded-lg text-center font-bold">
-                        Comprar Créditos
+                        Comprar Créditos UniTV
                     </a>
                 </div>
                 
@@ -510,9 +568,20 @@
                 <div class="pricing-card bg-gray-900 p-8 rounded-xl">
                     <h3 class="text-2xl font-bold mb-4 text-center">Primelux</h3>
                     <div class="text-center mb-6">
-                        <span class="text-4xl font-bold gradient-text">R$5</span>
-                        <span class="text-gray-400 block">por crédito</span>
-                        <span class="minimo-badge">Mínimo: 8 créditos</span>
+                        <div class="space-y-3">
+                            <div>
+                                <span class="text-3xl font-bold gradient-text">R$5</span>
+                                <span class="text-gray-400"> por crédito</span>
+                                <span class="minimo-badge">Mínimo: 8</span>
+                            </div>
+                            <div class="bg-purple-900 bg-opacity-50 p-3 rounded-lg">
+                                <div class="flex items-center justify-center gap-2">
+                                    <span class="text-xl font-bold text-white">R$ 180/mês</span>
+                                    <span class="ilimitado-badge">CRÉDITOS ILIMITADOS</span>
+                                </div>
+                                <p class="text-gray-300 text-sm mt-1">Conta mensal - Revenda sem limites</p>
+                            </div>
+                        </div>
                     </div>
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-center">
@@ -535,10 +604,19 @@
                             <i class="fas fa-check text-green-500 mr-2"></i>
                             <span>Margem de lucro: 60-200%</span>
                         </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Opção de créditos ilimitados</span>
+                        </li>
                     </ul>
-                    <a href="https://wa.me/5515997556792?text=Quero%20comprar%20créditos%20Primelux%20-%20mínimo%208%20créditos" class="btn-outline text-white w-full py-3 rounded-lg text-center font-bold hover:bg-blue-500">
-                        Comprar Créditos
-                    </a>
+                    <div class="space-y-3">
+                        <a href="https://wa.me/5515997556792?text=Quero%20comprar%20créditos%20Primelux%20-%20mínimo%208%20créditos" class="btn-outline text-white w-full py-3 rounded-lg text-center font-bold hover:bg-blue-500">
+                            Comprar Créditos Avulsos
+                        </a>
+                        <a href="https://wa.me/5515997556792?text=Quero%20a%20conta%20mensal%20Primelux%20-%20R%24180%20créditos%20ilimitados" class="btn-primary text-white w-full py-3 rounded-lg text-center font-bold">
+                            Conta Mensal Ilimitada
+                        </a>
+                    </div>
                 </div>
             </div>
             
@@ -549,19 +627,53 @@
                         Informações Importantes
                     </h4>
                     <p class="text-gray-300">
-                        • Valores dos créditos são <strong>verídicos</strong> e atualizados<br>
                         • <strong>Mínimo de 8 créditos</strong> por compra (qualquer plano)<br>
                         • <strong>Pagamento somente via PIX</strong><br>
                         • Ativação imediata após confirmação do pagamento<br>
-                        • <strong>Atendimento: 09:00 às 23:00</strong>
+                        • <strong>Atendimento: 09:00 às 23:00</strong><br>
+                        • <strong>UniTV:</strong> R$ 10,90 a partir de 100 créditos<br>
+                        • <strong>Primelux:</strong> R$ 180/mês para créditos ilimitados
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Video Section -->
+    <section id="video" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 section-title">
+                    <span class="gradient-text">Demonstração</span> do Serviço
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Veja na prática a qualidade e estabilidade do nosso serviço IPTV
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="video-container">
+                    <!-- Você pode substituir por um vídeo do YouTube ou Vimeo -->
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="Demonstração IPTV EnerVio" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="text-center mt-8">
+                    <p class="text-gray-400 mb-6">
+                        Assista à demonstração completa da qualidade dos nossos serviços IPTV
+                    </p>
+                    <a href="https://wa.me/5515997556792?text=Gostaria%20de%20ver%20mais%20demonstrações%20do%20serviço%20IPTV" class="btn-primary text-white px-8 py-4 rounded-lg text-lg font-bold inline-flex items-center">
+                        <i class="fas fa-play-circle mr-2"></i> Pedir Mais Demonstrações
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Vantagens Section -->
-    <section id="vantagens" class="py-24 bg-black">
+    <section id="vantagens" class="py-24 bg-gradient-to-b from-gray-900 to-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 section-title">
@@ -649,23 +761,11 @@
             origin: 'bottom'
         });
 
-        // Mostrar horário de atendimento baseado no horário atual
-        function atualizarStatusAtendimento() {
-            const agora = new Date();
-            const hora = agora.getHours();
-            const statusElement = document.getElementById('status-atendimento');
-            
-            if (hora >= 9 && hora < 23) {
-                statusElement.innerHTML = '<i class="fas fa-circle text-green-500 mr-2"></i> Online';
-                statusElement.className = 'text-green-400 font-semibold';
-            } else {
-                statusElement.innerHTML = '<i class="fas fa-circle text-red-500 mr-2"></i> Fora do horário';
-                statusElement.className = 'text-red-400 font-semibold';
-            }
-        }
-
-        // Chamar a função quando a página carregar
-        document.addEventListener('DOMContentLoaded', atualizarStatusAtendimento);
+        ScrollReveal().reveal('.video-container', {
+            delay: 400,
+            distance: '50px',
+            origin: 'bottom'
+        });
     </script>
 </body>
 </html>

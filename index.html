@@ -294,6 +294,17 @@
             padding: 15px;
             margin-top: 10px;
         }
+
+        .image-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .image-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 168, 255, 0.3);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -462,15 +473,10 @@
                     </div>
                 </div>
                 <div class="modern-card p-6 rounded-xl">
-                    <div class="bg-gray-800 rounded-lg p-4 mb-4">
-                        <div class="flex space-x-2 mb-4">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        </div>
-                        <div class="bg-gray-900 rounded p-4 text-center">
-                            <span class="text-blue-400 font-bold text-xl">SeuSiteDeRevenda.com</span>
-                        </div>
+                    <div class="image-card mb-4">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Site de Revenda IPTV" 
+                             class="w-full h-48 object-cover rounded-lg">
                     </div>
                     <p class="text-gray-400 text-center text-sm">
                         Exemplo de site personalizado - <a href="https://guguzer.github.io/IPTV/" target="_blank" class="text-blue-400 hover:text-blue-300">Clique para ver demo</a>
@@ -562,7 +568,7 @@
                             </div>
                         </div>
                     </div>
-                    <ul class="space-y-3 mb-8">
+                    <ul class="space-y-3 mb-6">
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-500 mr-2"></i>
                             <span>Excelente custo-benefício</span>
@@ -661,6 +667,37 @@
                     </p>
                 </div>
             </div>
+
+            <!-- Imagens de Demonstração -->
+            <div class="mt-20 grid md:grid-cols-3 gap-6">
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Painel de Controle IPTV" 
+                         class="w-full h-48 object-cover rounded-lg">
+                    <div class="p-4">
+                        <h4 class="text-white font-bold mb-2">Painel de Controle</h4>
+                        <p class="text-gray-400 text-sm">Interface intuitiva para gerenciar seus clientes</p>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Canais IPTV" 
+                         class="w-full h-48 object-cover rounded-lg">
+                    <div class="p-4">
+                        <h4 class="text-white font-bold mb-2">+10.000 Canais</h4>
+                        <p class="text-gray-400 text-sm">Variedade completa de conteúdo para seus clientes</p>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Suporte Técnico" 
+                         class="w-full h-48 object-cover rounded-lg">
+                    <div class="p-4">
+                        <h4 class="text-white font-bold mb-2">Suporte 24/7</h4>
+                        <p class="text-gray-400 text-sm">Equipe especializada sempre disponível</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -705,6 +742,13 @@
             delay: 300,
             distance: '50px',
             origin: 'bottom'
+        });
+
+        ScrollReveal().reveal('.image-card', {
+            delay: 400,
+            distance: '50px',
+            origin: 'bottom',
+            interval: 100
         });
     </script>
 </body>

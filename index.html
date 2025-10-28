@@ -9,120 +9,760 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
-
+        
+        :root {
+            --primary: #00a8ff;
+            --primary-dark: #0097e6;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --light: #ffffff;
+            --gray: #a0a0a0;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #050505;
-            color: #fff;
+            background-color: var(--darker);
+            color: var(--light);
             scroll-behavior: smooth;
         }
-
-        .gradient-text {
-            background: linear-gradient(45deg, #00a8ff, #00ffcc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.9), rgba(5, 5, 5, 0.95)), 
+                        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
-
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 168, 255, 0.7);
+        }
+        
+        .glow-box {
+            box-shadow: 0 0 15px rgba(0, 168, 255, 0.5);
+        }
+        
         .btn-primary {
-            background: linear-gradient(45deg, #00a8ff, #0097e6);
-            transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(0,168,255,0.3);
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
         }
-
+        
         .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(0,168,255,0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 168, 255, 0.4);
         }
-
-        .pricing-card {
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all .3s;
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
         }
-
-        .pricing-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 20px rgba(0,168,255,0.3);
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--light);
         }
-
-        .image-card {
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all .3s;
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+            background: linear-gradient(145deg, rgba(20, 20, 20, 0.8), rgba(15, 15, 15, 0.9));
         }
-
-        .image-card:hover {
-            transform: scale(1.05);
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 168, 255, 0.2);
         }
-
+        
+        .testimonial-card {
+            background: linear-gradient(145deg, rgba(25, 25, 25, 0.8), rgba(20, 20, 20, 0.9));
+            border-top: 4px solid var(--primary);
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            animation: pulse 2s infinite;
+            box-shadow: 0 5px 15px rgba(0, 168, 255, 0.5);
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(0, 168, 255, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 168, 255, 0);
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
         .section-title {
             position: relative;
             display: inline-block;
         }
-
+        
         .section-title::after {
             content: '';
             position: absolute;
             width: 50%;
             height: 3px;
-            background: #00a8ff;
-            bottom: -8px;
+            background: var(--primary);
+            bottom: -10px;
             left: 25%;
         }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Modern additions */
+        .gradient-text {
+            background: linear-gradient(45deg, #00a8ff, #00ffcc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .modern-card {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .modern-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 168, 255, 0.3);
+            border-color: rgba(0, 168, 255, 0.5);
+        }
+        
+        .profit-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(45deg, #00a8ff, #00ffcc);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
+        }
+        
+        .profit-calculator {
+            background: linear-gradient(135deg, rgba(0, 168, 255, 0.1), rgba(0, 255, 204, 0.1));
+            border: 1px solid rgba(0, 168, 255, 0.3);
+            border-radius: 16px;
+        }
+        
+        .profit-highlight {
+            background: linear-gradient(45deg, rgba(0, 168, 255, 0.2), rgba(0, 255, 204, 0.2));
+            border-left: 4px solid var(--primary);
+        }
+        
+        .pricing-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 168, 255, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .popular-plan {
+            position: relative;
+            border: 2px solid var(--primary);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
+        }
+        
+        .stats-card {
+            background: linear-gradient(145deg, rgba(20, 20, 20, 0.8), rgba(15, 15, 15, 0.9));
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 168, 255, 0.2);
+        }
 
+        .minimo-badge {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .horario-badge {
+            background: linear-gradient(45deg, #00a8ff, #0097e6);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .pix-badge {
+            background: linear-gradient(45deg, #32bb6c, #2a9c5a);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .desconto-badge {
+            background: linear-gradient(45deg, #ff4081, #f50057);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        .ilimitado-badge {
+            background: linear-gradient(45deg, #9c27b0, #673ab7);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        .price-comparison {
+            background: linear-gradient(135deg, rgba(255, 64, 129, 0.1), rgba(245, 0, 87, 0.1));
+            border: 1px solid rgba(255, 64, 129, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .image-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .image-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 168, 255, 0.3);
+        }
+
+        .primelux-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .primelux-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body class="antialiased">
+    <!-- Navigation -->
+    <nav class="bg-black bg-opacity-90 fixed w-full z-50 shadow-xl backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-blue-500 font-bold text-2xl md:text-3xl glow-text">EnerVio</span>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-8">
+                            <a href="#home" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-blue-400">Início</a>
+                            <a href="#sites" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-blue-400">Sites</a>
+                            <a href="#creditos" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-blue-400">Créditos</a>
+                            <a href="#vantagens" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-blue-400">Vantagens</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <a href="https://wa.me/5515997556792" class="btn-primary text-white px-6 py-3 rounded-lg text-sm font-bold inline-flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i> Seja um Revendedor
+                    </a>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none">
+                        <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-2 sm:px-3 bg-black bg-opacity-95 backdrop-blur-sm">
+                <a href="#home" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-gray-900 hover:text-blue-400">Início</a>
+                <a href="#sites" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-gray-900 hover:text-blue-400">Sites</a>
+                <a href="#creditos" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-gray-900 hover:text-blue-400">Créditos</a>
+                <a href="#vantagens" class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-gray-900 hover:text-blue-400">Vantagens</a>
+                <a href="https://wa.me/5515997556792" class="block btn-primary text-white px-3 py-3 rounded-md text-base font-bold text-center mt-2">
+                    <i class="fab fa-whatsapp mr-2"></i> Seja um Revendedor
+                </a>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Cabeçalho -->
-    <section class="py-20 text-center bg-black">
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-6 gradient-text">EnerVio - Programa de Revenda IPTV</h1>
-        <p class="text-gray-300 text-lg mb-10">Transforme seu negócio com a melhor oportunidade de revenda de IPTV + Site Profissional</p>
-        <div class="inline-flex items-center gap-2 bg-blue-700 px-5 py-2 rounded-full text-white">
-            <i class="fas fa-clock"></i> Atendimento: 09h às 23h
+    <!-- Hero Section -->
+    <section id="home" class="hero-section min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white">
+                <span class="gradient-text">Revenda IPTV</span> EnerVio
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-gray-300 max-w-3xl mx-auto">
+                Transforme seu negócio com a melhor oportunidade de revenda de IPTV + Site Profissional
+            </p>
+            
+            <div class="horario-badge inline-flex">
+                <i class="fas fa-clock"></i>
+                Atendimento: 09:00 às 23:00
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-6 mt-8">
+                <a href="https://wa.me/5515997556792" class="btn-primary text-white px-10 py-5 rounded-lg text-lg font-bold mx-auto sm:mx-0 transform hover:scale-105 transition-all">
+                    <i class="fas fa-user-tie mr-2"></i> Comece Agora
+                </a>
+                <a href="#creditos" class="btn-outline text-white px-10 py-5 rounded-lg text-lg font-bold mx-auto sm:mx-0 hover:bg-blue-500 transform hover:scale-105 transition-all">
+                    <i class="fas fa-credit-card mr-2"></i> Ver Créditos
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Seção de Sites -->
-    <section id="sites" class="py-20 bg-gradient-to-b from-black to-gray-900 text-center">
-        <h2 class="text-3xl font-bold mb-10 section-title"><span class="gradient-text">Sites Profissionais</span></h2>
-        <p class="text-gray-300 mb-10">Tenha seu próprio site moderno para vender IPTV com design premium</p>
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-            <div class="image-card shadow-xl">
-                <img src="https://cdn.dribbble.com/userupload/12827277/file/original-6bb4a2a6d1ef7c4dbf41b52d8c5f17f0.png?resize=1200x900" alt="Exemplo de site moderno" class="w-full">
-            </div>
-            <div class="text-left flex flex-col justify-center">
-                <h3 class="text-2xl font-bold mb-4 text-white">Site Completo e Moderno</h3>
-                <ul class="text-gray-300 space-y-2 mb-6">
-                    <li>✔ Design idêntico a este site</li>
-                    <li>✔ Totalmente personalizável</li>
-                    <li>✔ Otimizado para conversão</li>
-                    <li>✔ Integração com WhatsApp</li>
-                    <li>✔ Responsivo e rápido</li>
-                </ul>
-                <a href="https://wa.me/5515997556792" class="btn-primary text-white px-8 py-3 rounded-lg text-lg font-bold inline-block text-center">Quero meu site</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção de Créditos -->
-    <section id="creditos" class="py-20 bg-gradient-to-b from-gray-900 to-black text-center">
-        <h2 class="text-3xl font-bold mb-10 section-title"><span class="gradient-text">Créditos</span> EnerVio</h2>
-        <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            <div class="pricing-card bg-gray-900 p-8 rounded-xl">
-                <h3 class="text-2xl font-bold mb-4">Primelux</h3>
-                <p class="text-gray-300 mb-4">Créditos avulsos e plano mensal</p>
-                <div class="space-y-3">
-                    <a href="https://wa.me/5515997556792" class="btn-primary text-white w-full py-3 rounded-lg font-bold">Comprar Créditos Avulsos</a>
-                    <a href="https://wa.me/5515997556792" class="btn-primary text-white w-full py-3 rounded-lg bg-purple-700 hover:bg-purple-800 font-bold">Créditos Ilimitados</a>
+    <!-- Stats Section -->
+    <section class="py-16 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="stats-card p-6 text-center">
+                    <div class="text-3xl font-bold gradient-text mb-2">50+</div>
+                    <div class="text-gray-300">Revendedores Ativos</div>
+                </div>
+                <div class="stats-card p-6 text-center">
+                    <div class="text-3xl font-bold gradient-text mb-2">R$ 7K+</div>
+                    <div class="text-gray-300">Em Lucro Gerado</div>
+                </div>
+                <div class="stats-card p-6 text-center">
+                    <div class="text-3xl font-bold gradient-text mb-2">500+</div>
+                    <div class="text-gray-300">Clientes Atendidos</div>
+                </div>
+                <div class="stats-card p-6 text-center">
+                    <div class="text-3xl font-bold gradient-text mb-2">09h-23h</div>
+                    <div class="text-gray-300">Suporte Especializado</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Rodapé -->
-    <section class="py-10 bg-black text-center">
-        <p class="text-gray-400 text-sm">Atendimento: 09h às 23h | © 2025 EnerVio. Todos os direitos reservados.</p>
+    <!-- Sites de Representação Section -->
+    <section id="sites" class="py-24 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 section-title">
+                    <span class="gradient-text">Sites Profissionais</span> para Revenda
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Tenha seu próprio site personalizado para vender IPTV com design profissional
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-white">Site Completo de Representação</h3>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3 text-xl"></i>
+                            <span class="text-gray-300">Design idêntico a este site</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3 text-xl"></i>
+                            <span class="text-gray-300">Totalmente personalizável</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3 text-xl"></i>
+                            <span class="text-gray-300">Otimizado para conversão</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3 text-xl"></i>
+                            <span class="text-gray-300">Integração com WhatsApp</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3 text-xl"></i>
+                            <span class="text-gray-300">Responsivo para todos os dispositivos</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3 text-xl"></i>
+                            <span class="text-gray-300">Hospedagem inclusa</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="bg-blue-900 bg-opacity-30 p-4 rounded-xl">
+                            <h4 class="text-lg font-bold text-white mb-1">Com domínio grátis: R$ 250</h4>
+                            <p class="text-gray-300 text-sm">Domínio básico incluído (ex: seusite.enervio.com)</p>
+                        </div>
+                        
+                        <div class="bg-purple-900 bg-opacity-30 p-4 rounded-xl">
+                            <h4 class="text-lg font-bold text-white mb-1">Domínio personalizado: Valor variável</h4>
+                            <p class="text-gray-300 text-sm">Seunegocio.com | Suarevenda.net (consulte valores)</p>
+                        </div>
+                    </div>
+
+                    <div class="pix-badge inline-flex mb-4">
+                        <i class="fas fa-qrcode"></i>
+                        Pagamento via PIX
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://guguzer.github.io/IPTV/" target="_blank" class="btn-primary text-white px-8 py-4 rounded-lg text-lg font-bold inline-flex items-center justify-center">
+                            <i class="fas fa-eye mr-2"></i> Ver Site Demo
+                        </a>
+                        <a href="https://wa.me/5515997556792?text=Quero%20saber%20mais%20sobre%20o%20site%20de%20revenda" class="btn-outline text-white px-8 py-4 rounded-lg text-lg font-bold inline-flex items-center justify-center hover:bg-blue-500">
+                            <i class="fas fa-laptop-code mr-2"></i> Quero Meu Site
+                        </a>
+                    </div>
+                </div>
+                <div class="modern-card p-6 rounded-xl">
+                    <div class="image-card mb-4">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Site de Revenda IPTV" 
+                             class="w-full h-48 object-cover rounded-lg">
+                    </div>
+                    <p class="text-gray-400 text-center text-sm">
+                        Exemplo de site personalizado - <a href="https://guguzer.github.io/IPTV/" target="_blank" class="text-blue-400 hover:text-blue-300">Clique para ver demo</a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- Créditos Section -->
+    <section id="creditos" class="py-24 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 section-title">
+                    Nossos <span class="gradient-text">Créditos</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Escolha os melhores créditos para sua rede de revenda
+                    <br>
+                    <span class="text-yellow-400 font-semibold">Mínimo de 8 créditos por compra</span>
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Crédito UniTV -->
+                <div class="pricing-card popular-plan bg-gray-900 p-8 rounded-xl relative">
+                    <div class="popular-badge">MAIS VENDIDO</div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">UniTV</h3>
+                    <div class="text-center mb-6">
+                        <div class="flex justify-center items-baseline gap-2">
+                            <span class="text-4xl font-bold gradient-text">R$12</span>
+                            <span class="text-gray-400 text-lg">por crédito</span>
+                        </div>
+                        <div class="price-comparison">
+                            <span class="text-green-400 text-sm font-bold">
+                                <i class="fas fa-arrow-down"></i>
+                                A partir de 100 créditos: <strong>R$ 10,90</strong>
+                            </span>
+                        </div>
+                        <span class="minimo-badge">Mínimo: 8 créditos</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Alta taxa de conversão</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Estabilidade garantida</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Baixa taxa de cancelamento</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Suporte prioritário</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Margem de lucro: 40-100%</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times text-red-500 mr-2"></i>
+                            <span class="text-gray-400">Não possui créditos ilimitados</span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/5515997556792?text=Quero%20comprar%20créditos%20UniTV%20-%20mínimo%208%20créditos" class="btn-primary text-white w-full py-3 rounded-lg text-center font-bold">
+                        Comprar Créditos UniTV
+                    </a>
+                </div>
+                
+                <!-- Crédito Primelux CORRIGIDO -->
+                <div class="pricing-card bg-gray-900 p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Primelux</h3>
+                    
+                    <!-- Preço dos créditos avulsos -->
+                    <div class="text-center mb-4">
+                        <div class="flex justify-center items-baseline gap-2 mb-2">
+                            <span class="text-3xl font-bold gradient-text">R$5</span>
+                            <span class="text-gray-400">por crédito</span>
+                        </div>
+                        <span class="minimo-badge">Mínimo: 8 créditos</span>
+                    </div>
+
+                    <!-- Conta mensal ilimitada -->
+                    <div class="bg-purple-900 bg-opacity-50 p-4 rounded-lg mb-6">
+                        <div class="flex items-center justify-center gap-2 mb-2">
+                            <span class="text-xl font-bold text-white">R$ 180/mês</span>
+                            <span class="ilimitado-badge">CRÉDITOS ILIMITADOS</span>
+                        </div>
+                        <p class="text-gray-300 text-sm text-center">Conta mensal - Revenda sem limites</p>
+                    </div>
+
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Excelente custo-benefício</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Ideal para iniciantes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Alta rotatividade</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Suporte completo</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Margem de lucro: 60-200%</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Opção de créditos ilimitados</span>
+                        </li>
+                    </ul>
+
+                    <!-- Botões CORRETOS -->
+                    <div class="primelux-buttons">
+                        <a href="https://wa.me/5515997556792?text=Quero%20comprar%20créditos%20Primelux%20-%20mínimo%208%20créditos" class="btn-outline text-white w-full py-3 rounded-lg text-center font-bold hover:bg-blue-500 mb-2">
+                            Comprar Créditos Avulsos
+                        </a>
+                        <a href="https://wa.me/5515997556792?text=Quero%20a%20conta%20mensal%20Primelux%20-%20R%24180%20créditos%20ilimitados" class="btn-primary text-white w-full py-3 rounded-lg text-center font-bold">
+                            Conta Mensal Ilimitada
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <div class="bg-yellow-900 bg-opacity-30 p-6 rounded-xl max-w-3xl mx-auto">
+                    <h4 class="text-xl font-bold text-yellow-400 mb-2">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        Informações Importantes
+                    </h4>
+                    <p class="text-gray-300">
+                        • <strong>Mínimo de 8 créditos</strong> por compra (qualquer plano)<br>
+                        • <strong>Pagamento somente via PIX</strong><br>
+                        • Ativação imediata após confirmação do pagamento<br>
+                        • <strong>Atendimento: 09:00 às 23:00</strong><br>
+                        • <strong>UniTV:</strong> R$ 10,90 a partir de 100 créditos<br>
+                        • <strong>Primelux:</strong> R$ 180/mês para créditos ilimitados
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vantagens Section -->
+    <section id="vantagens" class="py-24 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 section-title">
+                    Vantagens de <span class="gradient-text">Revender</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Porque escolher a EnerVio para seu negócio de revenda
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Lucro Garantido</h3>
+                    <p class="text-gray-400">
+                        Margens de lucro atrativas que variam de 40% a 200% dependendo do plano escolhido.
+                    </p>
+                </div>
+                
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Suporte Especializado</h3>
+                    <p class="text-gray-400">
+                        Equipe especializada disponível das 09:00 às 23:00 para resolver qualquer problema técnico.
+                    </p>
+                </div>
+                
+                <div class="feature-card p-8 rounded-xl">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Crescimento Rápido</h3>
+                    <p class="text-gray-400">
+                        Ferramentas e estratégias para escalar seu negócio rapidamente.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Imagens de Demonstração CORRIGIDAS -->
+            <div class="mt-20 grid md:grid-cols-2 gap-6">
+                <div class="image-card bg-gray-800 p-6 rounded-xl">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-white mb-4">+10.000 Canais</h3>
+                        <p class="text-gray-300 mb-4">Variedade completa de conteúdo para seus clientes</p>
+                        <div class="flex justify-center">
+                            <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Canais IPTV" 
+                                 class="w-full h-48 object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="image-card bg-gray-800 p-6 rounded-xl">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-white mb-4">Suporte 09h-23h</h3>
+                        <p class="text-gray-300 mb-4">Equipe especializada sempre disponível</p>
+                        <div class="flex justify-center">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Suporte Técnico" 
+                                 class="w-full h-48 object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5515997556792" class="floating-btn btn-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobile-menu');
+            const button = document.getElementById('mobile-menu-button');
+            
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+
+        // Scroll Reveal Animation
+        ScrollReveal().reveal('.feature-card', {
+            delay: 200,
+            distance: '50px',
+            origin: 'bottom',
+            interval: 100
+        });
+
+        ScrollReveal().reveal('.stats-card', {
+            delay: 200,
+            distance: '50px',
+            origin: 'bottom',
+            interval: 100
+        });
+
+        ScrollReveal().reveal('.pricing-card', {
+            delay: 300,
+            distance: '50px',
+            origin: 'bottom'
+        });
+
+        ScrollReveal().reveal('.image-card', {
+            delay: 400,
+            distance: '50px',
+            origin: 'bottom',
+            interval: 100
+        });
+    </script>
 </body>
 </html>
